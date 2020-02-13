@@ -1,0 +1,45 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.4.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+	id 'war'
+}
+
+group = 'texas.sbq'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+	compile group: 'org.springframework', name: 'spring-tx', version: '5.2.3.RELEASE'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.1'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.2.4.RELEASE'
+	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '2.2.0'
+	compile files('libs/kkma-2.1.jar')
+	compile group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.11.718'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-aws', version: '2.2.1.RELEASE', ext: 'pom'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}
+
+test {
+	useJUnitPlatform()
+}

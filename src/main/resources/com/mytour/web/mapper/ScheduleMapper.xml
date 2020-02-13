@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.ScheduleMapper">
+	<select id="createSchedule" parameterType="com.mytour.web.map.Maps">
+		${CREATE_ALLDATA}
+	</select>
+	<insert id="insertSchedule" parameterType="com.mytour.web.schdule.Schedule">
+		insert into schedule(place, spot, point, img, latitude, info) values
+		(#{place},#{spot},#{point},#{img},#{latitude},#{info})
+	</insert>
+	<select id="selectScheduleList" resultType="com.mytour.web.schdule.Schedule">
+		select * from schedule
+	</select>
+</mapper>

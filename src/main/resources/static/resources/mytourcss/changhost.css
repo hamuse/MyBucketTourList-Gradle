@@ -1,0 +1,32 @@
+#host-container {
+        width: 940px;
+        margin: 0px auto;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #host-header {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid #bcbcbc;
+      }
+      #host-content {
+        width: 580px;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+      }
+      #host-sidebar {
+        width: 260px;
+        height: 250px;
+        margin-right: 1%;
+        padding: 20px;
+        margin-bottom: 20px;
+        float: right;
+        border: 1px solid #bcbcbc;
+      }
+      #host-footer {
+        clear: both;
+        padding: 20px;
+        border: 1px solid #bcbcbc;
+      }

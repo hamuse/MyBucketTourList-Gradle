@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>My Tour</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey="></script>
+	<script src="https://d3js.org/d3.v4.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="/resources/css/animate.css">
+    <link rel="stylesheet" href="/resources/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/resources/css/themify-icons.css">
+    <link rel="stylesheet" href="/resources/css/flaticon.css">
+    <link rel="stylesheet" href="/resources/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="/resources/css/magnific-popup.css">
+    <link rel="stylesheet" href="/resources/css/gijgo.min.css">
+    <link rel="stylesheet" href="/resources/css/nice-select.css">
+    <link rel="stylesheet" href="/resources/css/slick.css">
+	<link rel="stylesheet" href="/resources/mytourcss/login.css">
+	<link rel="stylesheet" href="/resources/mytourcss/changhost.css">
+	<link rel="stylesheet" href="/resources/mytourcss/createhost.css">
+	<link rel="stylesheet" href="/resources/mytourcss/tourizmstyle/star.css">
+	<link rel="stylesheet" href="/resources/mytourcss/tourizmstyle/tourizmimg.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
+ 	<link href="/resources/js/review/css/agency.min.css" rel="stylesheet">
+ 	<link href="/resources/js/review/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<script src="/resources/js/app.js"></script>
+	<script src="/resources/js/cmm/router.js"></script>
+	<script src="/resources/js/cmm/mainHome.js"></script>
+	<script src="/resources/js/vue/mainVue.js"></script>
+	<script src="/resources/js/crew/vue/introVue.js"></script>
+	<script src="/resources/js/crew/myList/myList.js"></script>
+	<script src="/resources/js/crew/myList/myListVue.js"></script>
+	<script src="/resources/js/crew/vue/mapVue.js"></script>
+	<script src="/resources/js/crew/vue/mapDVue.js"></script>
+	<script src="/resources/js/crew/js/intro.js"></script>
+	<script src="/resources/js/crew/js/map.js"></script>
+	<script src="/resources/js/crew/js/mapD.js"></script>
+	<script src="/resources/js/crew/corona/js/corona.js"></script>
+	<script src="/resources/js/crew/corona/vue/coronaVue.js"></script>
+	<script src="/resources/js/crew/hotel/vue/hotelVue.js"></script>
+	<script src="/resources/js/crew/hotel/js/hotel.js"></script>
+	<script src="/resources/js/crew/resto/js/resto.js"></script>
+	<script src="/resources/js/crew/resto/vue/restoVue.js"></script>
+	<script src="/resources/vendor/jquery-1.12.1.min.js"></script>
+	<script src="/resources/vendor/popper.min.js"></script>
+	<script src="/resources/vendor/bootstrap.min.js"></script>
+	<script src="/resources/vendor/jquery.magnific-popup.js"></script>
+	<script src="/resources/vendor/owl.carousel.min.js"></script>
+	<script src="/resources/vendor/masonry.pkgd.js"></script>
+	<script src="/resources/vendor/jquery.nice-select.min.js"></script>
+	<script src="/resources/vendor/gijgo.min.js"></script>
+	<script src="/resources/vendor/jquery.ajaxchimp.min.js"></script>
+	<script src="/resources/vendor/jquery.form.js"></script>
+	<script src="/resources/vendor/jquery.validate.min.js"></script>
+	<script src="/resources/vendor/mail-script.js"></script>
+	<script src="/resources/vendor/contact.js"></script>
+	<script src="/resources/vendor/custom.js"></script>
+	<script src="/resources/js/review/reviewjs/review.js"></script>
+	<script src="/resources/js/review/reviewjs/reviewbest.js"></script>
+	<script src="/resources/js/review/reviewjs/reviewdetailskill.js"></script>
+	<script src="/resources/js/review/reviewjs/update.js"></script>
+	<script src="/resources/js/review/reviewjs/write.js"></script>
+	<script src="/resources/js/review/reviewjs/wordcloud.js"></script>
+	<script src="/resources/js/review/vue/main_vue.js"></script>
+	<script src="/resources/js/review/vue/detail_vue.js"></script>
+	<script src="/resources/js/review/vue/write_vue.js"></script>
+	<script src="/resources/js/review/vue/search_vue.js"></script>
+	<script src="/resources/js/review/vue/wordcloudvue.js"></script>
+	<script src="/resources/js/user/login.js"></script>
+	<script src="/resources/js/user/logout.js"></script>
+	<script src="/resources/js/uservue/login_vue.js"></script>
+	<script src="/resources/js/user/mypage.js"></script>
+	<script src="/resources/js/uservue/mypage_vue.js"></script>
+	<script src="/resources/js/uservue/userupdate.js"></script>
+	<script src="/resources/js/user/findinfo.js"></script>
+	<script src="/resources/js/uservue/findinfo_vue.js"></script>
+	<script src="/resources/js/user/deleteinfo.js"></script>
+	<script src="/resources/js/uservue/deleteinfo_vue.js"></script>
+	<script src="/resources/js/user/userjoin.js"></script>
+	<script src="/resources/js/uservue/userjoin_vue.js"></script>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+</head>
+<body>
+
+<script>
+	alert('시작..')
+app.run()
+</script>
+</body>
+</html>

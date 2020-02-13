@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.SpaceMapper">
+	<select id="createSpace" parameterType="com.mytour.web.map.Maps">
+		${CREATE_SPACE}
+	</select>
+	<insert id="insertSaveList" parameterType="com.mytour.web.space.Space">
+		insert into space(userid,place,spot,point,img,latitude,info,distance,findnum) values
+		(#{userid},#{place},#{spot},#{point},#{img},#{latitude},#{info},#{distance},#{findnum})
+	</insert>
+	<select id="maxseq"  resultType="string">
+		select max(listseq) from space
+	</select>
+	<select id="myTourList"  resultType="com.mytour.web.space.Space" parameterType="com.mytour.web.space.Space">
+		select place, savedate, findnum from space where userid like #{userid} group by findnum
+	</select>
+	 <select id="myDetailList"  resultType="com.mytour.web.space.Space" parameterType="string">
+		select * from space where findnum like #{findnum}
+	</select>
+   <delete id ="deleteMytourList" parameterType="string">
+    	delete from space where findnum like #{findnum}
+    </delete>
+</mapper>

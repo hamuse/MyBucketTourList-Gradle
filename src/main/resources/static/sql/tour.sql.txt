@@ -1,0 +1,99 @@
+create table if not exists schedule
+	(schedule_seq primary key  auto_increment,
+	place varchar(30) primary key,
+	spot varchar(30),
+	user_point varchar(30),
+	image varchar(700),
+	latitude varchar(500),
+	info varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists users
+	(userid varchar(30) primary key,
+	passwd varchar(30) ,
+	uname varchar(30) ,
+	nickname varchar(30) ,
+	gender varchar(30) ,
+	birth varchar(60) ,
+	telno varchar(30))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists hotels
+	(place varchar(30) primary key,
+	spot varchar(30),
+	user_point varchar(30),
+	image varchar(500),
+	latitude varchar(500),
+	info varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists maps
+	(place varchar(500) primary key,
+	latitude varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists corona
+	(place varchar(500) primary key,
+	latitude varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists restaurants
+	(place varchar(30) primary key,
+	spot varchar(30),
+	user_point varchar(30),
+	image varchar(700),
+	latitude varchar(500),
+	info varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists community
+	(art_seq int(10) primary key auto_increment,
+	userid varchar(20),
+	image varchar(500), 
+	title varchar(100),
+	content varchar(20000),
+	tag varchar(50),
+	likecnt int(20))
+default character set utf8 collate utf8_general_ci;
+
+create table if not exists like_to
+	(like_seq int(10) primary key  auto_increment,
+	art_seq int(10) not null ,	
+	userid varchar(30), 
+	like_check varchar(10),
+	foreign key (art_seq) references community(art_seq) on delete cascade,
+	foreign key (userid) references user(userid) on delete cascade)
+default character set utf8 collate utf8_general_ci;
+
+
+create table if not exists comments
+	(comment_seq int(10) primary key auto_increment,
+	content varchar(500) , 
+	userid varchar(20),
+	art_seq int(10),
+	board_type varchar(50))
+default character set utf8 collate utf8_general_ci;
+
+create table space
+	(list_seq int(10) primary key auto_increment,
+	userid varchar(30),
+	savedate timestamp not null default now(),
+	place varchar(30),
+	spot varchar(30),
+	user_point varchar(30),
+	image varchar(700),
+	latitude varchar(700),
+	info varchar(700),
+	space_distance varchar(30),
+	find_num varchar(500))
+default character set utf8 collate utf8_general_ci;
+
+create table tour
+	(place varchar(30) primary key,
+	spot varchar(30),
+	user_point varchar(30),
+	image varchar(500),
+	latitude varchar(500),
+	info varchar(500))
+default character set utf8 collate utf8_general_ci;
+

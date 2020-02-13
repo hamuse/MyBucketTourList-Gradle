@@ -1,0 +1,12 @@
+.climg1{
+position : relative;
+} 
+.climg1 img {
+position : absolute;
+top:0;
+left: 50%;
+width: auto;
+height: 100%;
+display: block;
+transform: translate(-50%, 0);
+}

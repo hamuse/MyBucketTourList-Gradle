@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.UserMapper">
+	<select id="existId" resultType="int">
+		select count(*)
+		from user
+		where
+		uid like #{uid};
+	</select>
+	<select id="selectByIdPw" resultType="com.mytour.web.user.User">
+		select *
+		from user
+		where uid like #{uid}
+		and pwd like #{pwd}
+	</select>
+	<select id="findid" resultType="com.mytour.web.user.User" parameterType="com.mytour.web.user.User">
+		select *
+		from user
+		where uname like #{uname}
+		and tel like #{tel}
+	</select>
+	<select id="findpw" resultType="com.mytour.web.user.User" parameterType="com.mytour.web.user.User">
+		select *
+		from user
+		where uid like #{uid}
+			and tel like #{tel}
+	</select>
+	<insert id="insertUser" parameterType="com.mytour.web.user.User">
+		insert into user (uid, pwd, uname, nickname,gender, birth, tel) values (
+		#{uid}, #{pwd}, #{uname}, #{nickname}, #{gender},#{birth}, #{tel}
+		)
+	</insert>
+	<delete id="removeUser" parameterType="com.mytour.web.user.User">
+		delete from liketo,user using user inner join liketo on user.uid = liketo.uid
+		where user.uid like #{uid}
+		and user.pwd like #{pwd}
+	</delete>
+	<select id="createUser" parameterType="hashMap">
+		${CREATE_USER}
+	</select>
+	<select id="dropUser" parameterType="hashMap">
+		${DROP_USER}
+	</select>
+	<select id="truncateUser" parameterType="hashmap">
+		${TRUNCATE_USER}
+	</select>
+	<update id="update" parameterType="com.mytour.web.user.User" >
+	update user set uname  = #{uname},nickname = #{nickname},birth = #{birth},
+	tel = #{tel},
+	where uid like #{uid}
+	</update>
+	<select id="mylist" parameterType="com.mytour.web.user.User"  resultType="com.mytour.web.user.User">
+	select * from community where uid like #{uid}
+	</select>
+</mapper>

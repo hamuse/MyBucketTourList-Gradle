@@ -1,0 +1,11 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIA2WKXT3NGZOHALJDO
+      secretKey: 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
+    s3:
+      bucket: com.hamuse.s3
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false

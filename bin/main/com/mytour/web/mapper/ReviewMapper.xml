@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.ReviewMapper">
+	<select id="createReview" parameterType="hashmap">
+		${CREATE_REVIEW}
+	</select>
+	<select id="createLike" parameterType="hashmap">
+		${CREATE_LIKE}
+	</select>
+	<select id="createComment" parameterType="hashmap">
+		${CREATE_COMMENT}
+	</select>
+	<select id="dropReview" parameterType="map">
+		${DROP_TABLE}
+	</select>
+	<select id="truncateReview" parameterType="hashmap">
+		${TRUNCATE}
+	</select>
+	<select id="reviewlist" parameterType="int"
+		resultType="com.mytour.web.review.Review">
+	select * from community order
+	by artseq desc limit
+	#{startRow}, #{pageSize}
+	</select>
+	<select id="allreviewlist"
+		resultType="com.mytour.web.review.Review">
+		select * from community order by artseq desc
+	</select>
+	<insert id="insertReview"
+		parameterType="com.mytour.web.review.Review">
+		insert into community(uid,img,title,content,tag)
+		values
+		(#{uid},#{img},#{title},#{content},#{tag})
+	</insert>
+	<select id="countCommunity" resultType="int">
+		select count(*) from
+		community
+	</select>
+	<insert id="insertComment"
+		parameterType="com.mytour.web.review.Comment">
+		insert into comment
+		(comments,artseq,uid) values
+		(#{comments},#{artseq},#{uid})
+	</insert>
+	<select id="getcomment" parameterType="int"
+		resultType="com.mytour.web.review.Comment">
+		select * from comment where artseq like #{artseq}
+	</select>
+	<select id="selectbyuid"
+		parameterType="com.mytour.web.review.Review" resultType="string">
+		select
+		max(artseq) from community where uid like #{uid}
+	</select>
+	<insert id="insertIMG"
+		parameterType="com.mytour.web.review.Review">
+		update community set img = #{img} where artseq like
+		#{artseq}
+	</insert>
+	<select id="getLike" parameterType="String"
+		resultType="com.mytour.web.review.Like">
+		select * from liketo where artseq like #{artseq} and uid
+		like #{uid}
+	</select>
+	<insert id="insertLike" parameterType="com.mytour.web.review.Like">
+		insert into liketo
+		(artseq,uid,likecheck) values (#{artseq},#{uid},#{likecheck})
+	</insert>
+	<update id="updatelikecnt"
+		parameterType="com.mytour.web.review.Review">
+		update community set likecnt = #{likecnt} where artseq =
+		#{artseq}
+	</update>
+	<update id="updatelikecheck"
+		parameterType="com.mytour.web.review.Like">
+		update liketo set likecheck = #{likecheck} where artseq
+		like #{artseq} and
+		uid like #{uid}
+	</update>
+	<select id="likecount" parameterType="String" resultType="int">
+		select
+		count(*) from liketo where artseq like #{artseq} and likecheck like 1
+	</select>
+	<select id="liked" parameterType="com.mytour.web.review.Like"
+		resultType="String">
+		select likecheck from liketo where artseq like #{artseq}
+		and uid like #{uid}
+	</select>
+	<delete id="delete" parameterType="string">
+		delete from community
+		where artseq like #{artseq}
+	</delete>
+	<delete id="commentdelete" parameterType="string">
+		delete from comment
+		where commentno like #{commentno}
+	</delete>
+	<update id="update" parameterType="com.mytour.web.review.Review">
+		update community set
+		title =#{title},content = #{content} where artseq like #{artseq}
+	</update>
+	<select id="uidlist" resultType="string">
+		select uid from user
+	</select>
+	<select id="artseqlist" resultType="string">
+		select artseq from community
+	</select>
+	<select id="likeinfo" resultType="com.mytour.web.review.Review">
+		select count(*) as likecnt,artseq from liketo group by artseq
+	</select>
+	<select id="selectbyId" parameterType="string"
+		resultType="com.mytour.web.user.User">
+		select * from user where uid like #{uid}
+	</select>
+	<select id="selectbyage" parameterType="hashmap"
+		resultType="com.mytour.web.review.Review">
+	<![CDATA[
+		select * from community where  artseq in
+		(select distinct artseq  from liketo where uid in
+		(select uid from (select * from user where gender like #{gender})a
+		where  timestampdiff(year, a.birth, curdate())>=#{ages} and timestampdiff(year, a.birth, curdate())<#{endages}))
+		order by likecnt desc limit 4,16
+	]]>
+	</select>
+	<select id="selectbylike" parameterType="string" resultType="com.mytour.web.review.Review">
+		select * from community where tag in (select tag from
+		((select count(*)c,tag from community where artseq in (select distinct artseq from
+		liketo where uid like #{uid} )group by tag order by c desc limit
+		2)a)) order by likecnt desc limit 12
+	</select>
+	<select id="userlikecnt" parameterType="string" resultType="int">
+		select count(*) from liketo where uid like #{uid}
+	</select>
+</mapper>

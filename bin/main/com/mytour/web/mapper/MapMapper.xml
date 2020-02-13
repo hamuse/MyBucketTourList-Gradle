@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.MapMapper">
+	<select id="createMap" parameterType="com.mytour.web.map.Maps">
+		${CREATE_MAP}
+	</select>
+	<select id="selectMapsByPlace" parameterType="string"
+		resultType="com.mytour.web.map.Maps">
+		select * from map where place like #{place}
+	</select>
+	<insert id="insertMap" parameterType="com.mytour.web.map.Maps">
+		insert into map
+		(place,latitude) values
+		(#{place},#{latitude})
+	</insert>
+	<select id="createCorona" parameterType="com.mytour.web.map.Corona">
+		${CREATE_CORONA}
+	</select>
+	<insert id="insertCorona" parameterType="com.mytour.web.map.Corona">
+		insert into corona
+		(place,latitude) values
+		(#{place},#{latitude})
+	</insert>
+	<select id="selectCoronaList" resultType="com.mytour.web.map.Corona">
+		select * from corona
+	</select>
+</mapper>

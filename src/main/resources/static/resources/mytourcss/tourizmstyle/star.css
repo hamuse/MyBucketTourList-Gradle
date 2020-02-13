@@ -1,0 +1,7 @@
+     #star_grade a{
+        text-decoration: none;
+        color: gray;
+    }
+    #star_grade a.on{
+        color: red;
+    }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.RestoMapper">
+	<select id="createResto" parameterType="com.mytour.web.map.Maps">
+		${CREATE_RESTO}
+	</select>
+	<insert id="insertResto" parameterType="com.mytour.web.resto.Resto">
+		insert into resto(place,spot,point,img,latitude,info) values
+		(#{place},#{spot},#{point},#{img},#{latitude},#{info})
+	</insert>
+	<select id="selectRestoList" resultType="com.mytour.web.resto.Resto">
+		select * from resto
+	</select>
+</mapper>

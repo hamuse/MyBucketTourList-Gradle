@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mytour.web.mapper.HotelMapper">
+	<select id="createHotel" parameterType="com.mytour.web.map.Maps">
+		${CREATE_HOTEL}
+	</select>
+	<insert id="insertHotel" parameterType="com.mytour.web.hotel.Hotel">
+		insert into
+		hotel(place,spot,point,img,latitude,info) values
+		(#{place},#{spot},#{point},#{img},#{latitude},#{info})
+	</insert>
+	<select id="selectHotelList" resultType="com.mytour.web.hotel.Hotel">
+		select * from hotel
+	</select>
+</mapper>
